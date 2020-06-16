@@ -16,6 +16,7 @@ namespace Testserver
         //*****************CONSTRUCTOR****************
         //############################################
 
+        //Initialize button
         public Button(int buttonID)
         {
             var gpio = GpioController.GetDefault();

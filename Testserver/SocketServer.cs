@@ -59,9 +59,10 @@ namespace Testserver
         public async void Server_OnDataOntvangen(string bericht)
         {
             IPAddress addr;
+            //Wanneer het bericht een IP-adress is wordt deze geregistreerd en toegevoegd aan een lijst.
             if (IPAddress.TryParse(bericht, out addr))
             {
-                Debug.WriteLine("Bericht ontvangen van de server: " + bericht);
+                Debug.WriteLine("Connectie gemaakt met client: " + bericht);
                 //Als hij niet in de lijst voorkomt, is het een nieuw team
                 Task.Delay(150).Wait();
                 if (!teamIP.Contains(bericht))
@@ -70,21 +71,19 @@ namespace Testserver
                     SocketClient tmp = new SocketClient(bericht, 9000);
                     teams.Add(tmp);
                     await Task.Delay(1000);
-                    //teams[0].Verstuur("verkeerslicht <direction> heeft verbinding gemaakt");
-                    VerstuurBericht("false false false");
-
-                    Debug.WriteLine("verkeerslicht <direction> heeft verbinding met de server!");
+                    VerstuurBericht("connectie gemaakt");
                 }
                 else
                 {
                     Debug.WriteLine("IP adres heeft al connectie, niks mee doen");
                 }
             }
+            //Wanneer het bericht geen IP-adress is zal het berichten worden ontvangen als data.
             else
             {
                 _data = bericht;
                 _dataReceived = true;
-                Debug.WriteLine("Bericht ontvangen van de server: " + bericht);
+                //Debug.WriteLine("Bericht ontvangen van de server: " + bericht);
             }
         }
 

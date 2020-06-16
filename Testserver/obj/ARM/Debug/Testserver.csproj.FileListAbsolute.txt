@@ -340,7 +340,6 @@ D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\System.Xml.ReaderWri
 D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\System.Xml.XDocument.dll
 D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\System.Xml.XmlDocument.dll
 D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\System.Xml.XmlSerializer.dll
-D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\Microsoft.UI.Xaml.Markup.winmd
 D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\Testserver.csprojAssemblyReference.cache
 D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\App.g.i.cs
 D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\App.g.cs
@@ -436,3 +435,4 @@ D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\qualifiers.txt.inter
 D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\MultipleQualifiersPerDimensionFound.txt
 D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\ProjectArchitectures.txt
 D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_636758480200000000.json
+D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\windows.winmd

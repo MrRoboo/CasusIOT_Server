@@ -10,7 +10,7 @@
     <PackageArchitecture>arm</PackageArchitecture>
     <PackageIdentityName>b5f413b3-a251-4056-80f9-ae8c58883e6f</PackageIdentityName>
     <PackageIdentityPublisher>CN=Martijn</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType>
     </RemoteDeploymentType>
     <PackageRegistrationPath>
@@ -18,8 +18,8 @@
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>B505C815DC0ED72A47EFAC1F9A89C068367BDD8949D502C86732B73CFB269E1D</RegisteredManifestChecksum>
+    <LayoutDir>D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\AppX</LayoutDir>
+    <RegisteredManifestChecksum>B01B1AFB844352823F36942DBD9D0F2BE3101D29F294A32EB83B5CA6E42F86EB</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>b5f413b3-a251-4056-80f9-ae8c58883e6f_1.0.0.0_arm__kmv2j33maxm6e</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>b5f413b3-a251-4056-80f9-ae8c58883e6f_kmv2j33maxm6e!App</RegisteredUserModeAppID>
     <RegisteredPackageID>b5f413b3-a251-4056-80f9-ae8c58883e6f</RegisteredPackageID>
@@ -27,16 +27,16 @@
     <RegisteredVersion>1.0.0.0</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-06-15T10:20:07.710</Modified>
+      <Modified>2020-06-16T19:24:45.537</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\Testserver.exe">
+    <AppxPackagedFile Include="D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\Testserver.exe">
       <PackagePath>entrypoint\Testserver.exe</PackagePath>
-      <Modified>2020-06-15T10:20:06.533</Modified>
+      <Modified>2020-06-16T19:24:45.219</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\microsoft.csharp\4.0.1\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -490,71 +490,71 @@
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
       <Modified>2016-06-11T20:15:04.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.17763.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
-      <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
-      <Modified>2018-10-22T23:33:40.000</Modified>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17763.0\Facade\windows.winmd">
+      <PackagePath>windows.winmd</PackagePath>
+      <Modified>2018-08-09T15:44:24.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Martijn\source\repos\Testserver\Testserver\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="D:\Martijn\source\repos\Testserver\Testserver\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
       <Modified>2020-06-14T16:28:17.417</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Martijn\source\repos\Testserver\Testserver\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="D:\Martijn\source\repos\Testserver\Testserver\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
       <Modified>2020-06-09T14:17:36.442</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Martijn\source\repos\Testserver\Testserver\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="D:\Martijn\source\repos\Testserver\Testserver\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2020-06-09T14:17:36.442</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Martijn\source\repos\Testserver\Testserver\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\Martijn\source\repos\Testserver\Testserver\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2020-06-09T14:17:36.442</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Martijn\source\repos\Testserver\Testserver\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\Martijn\source\repos\Testserver\Testserver\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2020-06-09T14:17:36.442</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Martijn\source\repos\Testserver\Testserver\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="D:\Martijn\source\repos\Testserver\Testserver\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2020-06-09T14:17:36.442</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Martijn\source\repos\Testserver\Testserver\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="D:\Martijn\source\repos\Testserver\Testserver\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2020-06-09T14:17:36.442</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Martijn\source\repos\Testserver\Testserver\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\Martijn\source\repos\Testserver\Testserver\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2020-06-09T14:17:36.442</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\Testserver.xr.xml">
+    <AppxPackagedFile Include="D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\Testserver.xr.xml">
       <PackagePath>Testserver.xr.xml</PackagePath>
       <Modified>2020-06-15T08:07:29.331</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\App.xbf">
+    <AppxPackagedFile Include="D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2020-06-15T10:20:06.381</Modified>
+      <Modified>2020-06-16T13:19:38.500</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2020-06-15T10:20:06.381</Modified>
+      <Modified>2020-06-16T13:19:38.500</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17763.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2018-10-22T22:44:28.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\resources.pri">
+    <AppxPackagedFile Include="D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-06-15T10:20:07.443</Modified>
+      <Modified>2020-06-16T16:51:28.761</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\Core\Testserver.exe">
+    <AppxPackagedFile Include="D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\Core\Testserver.exe">
       <PackagePath>Testserver.exe</PackagePath>
-      <Modified>2020-06-15T10:20:07.693</Modified>
+      <Modified>2020-06-16T19:24:45.521</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

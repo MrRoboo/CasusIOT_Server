@@ -2,7 +2,7 @@
  * Author: Martijn                              *
  * Date: 06-2020                                *
  *                                              *
- * Server Test project                          *
+ * Server Testserver project                    *
  * WifiCommunication between Raspberries        *
  * Based on project from Rianne Boumans         *
  ************************************************/
@@ -12,6 +12,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Devices.Gpio;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -50,7 +51,7 @@ namespace Testserver
             //Creer een nieuwe server die luistert naar poort 9000
             //Poortnummer mag anders zijn, maar de clients moeten naar hetzelfde nummer luisteren
             server = new SocketServer(9000);
-            
+
             //Koppel OnDataOntvangen aan de methode die uitgevoerd worden:
             server.OnDataOntvangen += server.Server_OnDataOntvangen;
 
@@ -62,9 +63,14 @@ namespace Testserver
         }
 
 
+        //############################################
+        //*******************METHODS******************
+        //############################################
+
         //****************PROGRAM_FLOW****************
 
-        private void Aansturen() {
+        private void Aansturen()
+        {
             while (true)
             {
                 //Information will be sent to leds if data is received
@@ -77,12 +83,15 @@ namespace Testserver
                     String dataString = server.GetData();
                     Debug.WriteLine(dataString);
 
-
                     //Check the values of the sensors and send to host
-                    _objectTouchmessage = "test communication message";
-                    
-                    Debug.WriteLine(_objectTouchmessage);
-                    server.VerstuurBericht(_objectTouchmessage);
+                    //_objectTouchmessage = "test communication message";
+                    //Debug.WriteLine(_objectTouchmessage);
+
+                    //De delay voorkomt de spam van berichten in de console tijdens het testen. 
+                    //omdat de data van client naar server en visa versa wordt verstuurd.
+                    Task.Delay(500).Wait();
+                    server.VerstuurBericht("bericht vanuit de server");
+
                 }
             }
         }
