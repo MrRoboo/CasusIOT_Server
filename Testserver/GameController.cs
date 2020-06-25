@@ -20,6 +20,11 @@ namespace Testserver
         int sessionID;
         int gameDataID;
 
+        public GameController(int patientID)
+        {
+            sessionID = dbController.CreateSessionFor(patientID, DateTime.Now);
+        }
+
         public bool IsGameValid()
         {
             return counter == 0;
@@ -48,10 +53,6 @@ namespace Testserver
             StartTimer();
         }
 
-        public GameController(int patientID)
-        {
-            sessionID = dbController.CreateSessionFor(patientID, DateTime.Now);
-        }
 
         public void SetNewGame()
         {
