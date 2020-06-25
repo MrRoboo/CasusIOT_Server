@@ -34,6 +34,9 @@ namespace Testserver
         Raspberry raspberry = new Raspberry();
         SocketClient client = new SocketClient();
 
+        ForceSensor forceSensor;
+        const int sensorPin = 0; //Line 0 maps to physical pin number 24 on the RPi2 or RPi3
+        const int gpioPin = 25;
 
         private Button _button;
         private bool _isObjectTouched = false;
@@ -54,6 +57,9 @@ namespace Testserver
 
             //Koppel OnDataOntvangen aan de methode die uitgevoerd worden:
             server.OnDataOntvangen += server.Server_OnDataOntvangen;
+
+            //Init force sensor
+            forceSensor = new ForceSensor(sensorPin, gpioPin);
 
             //initialiseren van hardware
             InitButtons();
