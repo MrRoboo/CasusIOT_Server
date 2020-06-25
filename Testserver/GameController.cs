@@ -21,22 +21,21 @@ namespace Testserver
             sessionID = dbController.CreateSessionFor(patientID, DateTime.Now);
         }
 
-        public void setNewGame(string gameType)
+        public void setNewGame()
         {
-            gameDataID = dbController.CreateGameDataFor(sessionID, gameType);
+            gameDataID = dbController.CreateGameDataFor(sessionID);
         }
 
         public void EndGame()
         {
             foreach (var fd in forceData)
             {
-                dbController.CreateForceDataFor(gameDataID, (int)fd["ObjectID"], (float)fd["Force"]);
+                dbController.CreateForceDataFor(gameDataID, (float)fd["Force"]);
             }
 
             foreach (var sd in speedData)
             {
-                dbController.CreateSpeedDataFor(gameDataID, (int)sd["SenderID"], (int)sd["ReceiverID"],
-                    (DateTime)sd["TimeTriggered"], (DateTime)sd["TimePressed"], (float)sd["Distance"]);
+                dbController.CreateSpeedDataFor(gameDataID, (DateTime)sd["TimeTriggered"], (DateTime)sd["TimePressed"], (float)sd["Distance"]);
             }
 
             resetData();

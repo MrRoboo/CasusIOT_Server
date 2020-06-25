@@ -9,7 +9,7 @@ namespace Testserver
 {
     class DbController
     {
-        private string connectionString = "Data Source=iot-test-zuyd.database.windows.net;Initial Catalog=casus11-iot;User ID=iot;Password=Wachtwoord@01;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        private string connectionString = "Data Source=iot.database.windows.net;Initial Catalog=casus11;User ID=iot;Password=Wachtwoord@01;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         public int CreateSessionFor(int patientID, DateTime date)
         {
@@ -38,20 +38,18 @@ namespace Testserver
             }
         }
 
-        public int CreateGameDataFor(int sessionID, string gameType)
+        public int CreateGameDataFor(int sessionID)
         {
             string tbl = "tbl_Data";
             string clmn_SessionID = "SessionID";
-            string clmn_GameType = "GameType";
 
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                var sql = "INSERT INTO " + tbl + "(" + clmn_SessionID + ", " + clmn_GameType + ") VALUES(@" + clmn_SessionID + ", @" + clmn_GameType + "); SELECT CAST(scope_identity() AS int)";
+                var sql = "INSERT INTO " + tbl + "(" + clmn_SessionID + ") VALUES(@" + clmn_SessionID + "); SELECT CAST(scope_identity() AS int)";
                 using (var cmd = new SqlCommand(sql, connection))
                 {
                     cmd.Parameters.AddWithValue("@" + clmn_SessionID + "", sessionID);
-                    cmd.Parameters.AddWithValue("@" + clmn_GameType + "", gameType);
 
                     int modified = (int)cmd.ExecuteScalar();
 
@@ -65,12 +63,10 @@ namespace Testserver
             }
         }
 
-        public void CreateSpeedDataFor(int gameDataID, int senderID, int receiverID, DateTime triggered, DateTime pressed, float distance)
+        public void CreateSpeedDataFor(int gameDataID, DateTime triggered, DateTime pressed, float distance)
         {
             string tbl = "tbl_SpeedData";
             string clmn_GameDataID = "DataID";
-            string clmn_SenderID = "SenderID";
-            string clmn_ReceiverID = "ReceiverID";
             string clmn_TimeTriggered = "TimeTriggered";
             string clmn_TimePressed = "TimePressed";
             string clmn_Distance = "Distance";
@@ -78,13 +74,11 @@ namespace Testserver
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                var sql = "INSERT INTO " + tbl + "(" + clmn_GameDataID + ", " + clmn_SenderID + ", " + clmn_ReceiverID + ", " + clmn_TimeTriggered + ", " + clmn_TimePressed + ", " + clmn_Distance + ") " +
-                          "VALUES(@" + clmn_GameDataID + ", @" + clmn_SenderID + ", @" + clmn_ReceiverID + ", @" + clmn_TimeTriggered + ", @" + clmn_TimePressed + ", @" + clmn_Distance + ")";
+                var sql = "INSERT INTO " + tbl + "(" + clmn_GameDataID + ", " + clmn_TimeTriggered + ", " + clmn_TimePressed + ", " + clmn_Distance + ") " +
+                          "VALUES(@" + clmn_GameDataID + ", @" + clmn_TimeTriggered + ", @" + clmn_TimePressed + ", @" + clmn_Distance + ")";
                 using (var cmd = new SqlCommand(sql, connection))
                 {
                     cmd.Parameters.AddWithValue("@" + clmn_GameDataID + "", gameDataID);
-                    cmd.Parameters.AddWithValue("@" + clmn_SenderID + "", senderID);
-                    cmd.Parameters.AddWithValue("@" + clmn_ReceiverID + "", receiverID);
                     cmd.Parameters.AddWithValue("@" + clmn_TimeTriggered + "", triggered);
                     cmd.Parameters.AddWithValue("@" + clmn_TimePressed + "", pressed);
                     cmd.Parameters.AddWithValue("@" + clmn_Distance + "", distance);
@@ -94,21 +88,19 @@ namespace Testserver
             }
         }
 
-        public void CreateForceDataFor(int gameDataID, int objectID, float force)
+        public void CreateForceDataFor(int gameDataID, float force)
         {
             string tbl = "tbl_ForceData";
             string clmn_GameDataID = "DataID";
-            string clmn_ObjectID = "ObjectID";
             string clmn_Force = "Force";
 
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                var sql = "INSERT INTO " + tbl + "(" + clmn_GameDataID + ", " + clmn_ObjectID + ", " + clmn_Force + ") VALUES(@" + clmn_GameDataID + ", @" + clmn_ObjectID + ", @" + clmn_Force + ")";
+                var sql = "INSERT INTO " + tbl + "(" + clmn_GameDataID + ", " + clmn_Force + ") VALUES(@" + clmn_GameDataID + ", @" + clmn_Force + ")";
                 using (var cmd = new SqlCommand(sql, connection))
                 {
                     cmd.Parameters.AddWithValue("@" + clmn_GameDataID + "", gameDataID);
-                    cmd.Parameters.AddWithValue("@" + clmn_ObjectID + "", objectID);
                     cmd.Parameters.AddWithValue("@" + clmn_Force + "", force);
 
                     cmd.ExecuteNonQuery();
