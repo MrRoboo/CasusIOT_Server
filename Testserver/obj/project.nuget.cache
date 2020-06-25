@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "5dQiGGKc7d5YCAf6krMrsjt7BB/ulVnb7EMLebnXrnGwYrCIIWrgCgw94Xtl0StU1oMUlMp7tEemCMEBBPznow==",
+  "dgSpecHash": "t/fZQlBGlcNBu4y4sjzpurJ1eCibI3cNeQGj5NwecA4I0xJJNaOsyZVuIWvSXrYZIjo0yF/JtL8aFd86MVe+LQ==",
   "success": true,
   "projectFilePath": "D:\\Martijn\\source\\repos\\Testserver\\Testserver\\Testserver.csproj",
   "expectedPackageFiles": [
@@ -90,7 +90,8 @@
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\system.componentmodel\\4.0.1\\system.componentmodel.4.0.1.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\system.componentmodel.annotations\\4.1.0\\system.componentmodel.annotations.4.1.0.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\system.componentmodel.eventbasedasync\\4.0.11\\system.componentmodel.eventbasedasync.4.0.11.nupkg.sha512",
-    "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\system.data.common\\4.1.0\\system.data.common.4.1.0.nupkg.sha512",
+    "C:\\Users\\Martijn\\.nuget\\packages\\system.data.common\\4.3.0\\system.data.common.4.3.0.nupkg.sha512",
+    "C:\\Users\\Martijn\\.nuget\\packages\\system.data.sqlclient\\4.8.1\\system.data.sqlclient.4.8.1.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\system.diagnostics.contracts\\4.0.1\\system.diagnostics.contracts.4.0.1.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\system.diagnostics.debug\\4.0.11\\system.diagnostics.debug.4.0.11.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\system.diagnostics.diagnosticsource\\4.0.0\\system.diagnostics.diagnosticsource.4.0.0.nupkg.sha512",
