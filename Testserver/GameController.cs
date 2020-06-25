@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 
 namespace Testserver
 {
@@ -13,15 +14,46 @@ namespace Testserver
         List<Dictionary<string, object>> forceData = new List<Dictionary<string, object>>();
         List<Dictionary<string, object>> speedData = new List<Dictionary<string, object>>();
 
+        private DispatcherTimer timer;
+        private int counter = 60;
+
         int sessionID;
         int gameDataID;
+
+        public bool IsGameValid()
+        {
+            return counter == 0;
+        }
+
+        private void StartTimer()
+        {
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(1000);
+            timer.Tick += Timer_Tick;
+            timer.Start();
+        }
+
+        private void Timer_Tick(object sender, object e)
+        {
+            counter--;
+            if (counter == 0)
+            {
+                timer.Stop();
+                EndGame();
+            }
+        }
+
+        public void RunGame()
+        {
+            StartTimer();
+        }
 
         public GameController(int patientID)
         {
             sessionID = dbController.CreateSessionFor(patientID, DateTime.Now);
         }
 
-        public void setNewGame()
+        public void SetNewGame()
         {
             gameDataID = dbController.CreateGameDataFor(sessionID);
         }
@@ -38,29 +70,26 @@ namespace Testserver
                 dbController.CreateSpeedDataFor(gameDataID, (DateTime)sd["TimeTriggered"], (DateTime)sd["TimePressed"], (float)sd["Distance"]);
             }
 
-            resetData();
+            ResetData();
         }
 
-        void resetData()
+        void ResetData()
         {
             forceData.Clear();
             speedData.Clear();
         }
 
-        public void AddForceData(int objectID, float force)
+        public void AddForceData(float force)
         {
             Dictionary<string, object> fd = new Dictionary<string, object>();
-            fd.Add("ObjectID", objectID);
             fd.Add("Force", force);
 
             forceData.Add(fd);
         }
 
-        public void AddSpeedData(int senderID, int receiverID, DateTime triggered, DateTime pressed, float distance)
+        public void AddSpeedData(DateTime triggered, DateTime pressed, float distance)
         {
             Dictionary<string, object> sd = new Dictionary<string, object>();
-            sd.Add("SenderID", senderID);
-            sd.Add("ReceiverID", receiverID);
             sd.Add("TimeTriggered", triggered);
             sd.Add("TimePressed", pressed);
             sd.Add("Distance", distance);

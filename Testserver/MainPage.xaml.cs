@@ -23,13 +23,16 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
+using Newtonsoft.Json;
+using System.Globalization;
 
 namespace Testserver
 {
     public sealed partial class MainPage : Page
     {
         private SocketServer server;
+
+        GameController gameController = new GameController(1);
 
         Raspberry raspberry = new Raspberry();
         SocketClient client = new SocketClient();
@@ -64,6 +67,10 @@ namespace Testserver
             //initialiseren van hardware
             InitButtons();
 
+            //Set new game
+            gameController.SetNewGame();
+            gameController.RunGame();
+
             //Logica die de flow van de app bepaald
             Aansturen();
         }
@@ -77,7 +84,7 @@ namespace Testserver
 
         private void Aansturen()
         {
-            while (true)
+            while (gameController.IsGameValid())
             {
                 //Information will be sent to leds if data is received
                 if (server.GetDataReceived())
@@ -87,6 +94,12 @@ namespace Testserver
 
                     //Get received data -> SocketServer.cs
                     String dataString = server.GetData();
+                    if (dataString[0] == 'f')
+                    {
+                        float force = float.Parse(dataString.Substring(0), CultureInfo.InvariantCulture.NumberFormat);
+                        gameController.AddForceData(force);
+                    }
+                 
                     Debug.WriteLine(dataString);
 
                     //Check the values of the sensors and send to host
@@ -97,8 +110,9 @@ namespace Testserver
                     //omdat de data van client naar server en visa versa wordt verstuurd.
                     Task.Delay(500).Wait();
                     server.VerstuurBericht("bericht vanuit de server");
-
                 }
+                Debug.WriteLine(gameController.IsGameValid());
+
             }
         }
 
