@@ -129,6 +129,8 @@
     <Compile Include="SocketClient.cs" />
     <Compile Include="SocketServer.cs" />
     <Compile Include="Trigger.cs" />
+    <Compile Include="DatabaseController.cs" />
+    <Compile Include="GameController.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -158,6 +160,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.10</Version>
+    </PackageReference>
+    <PackageReference Include="System.Data.SqlClient">
+      <Version>4.8.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

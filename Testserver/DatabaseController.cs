@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 
-namespace IoT_DbController
+namespace Testserver
 {
     class DbController
     {
