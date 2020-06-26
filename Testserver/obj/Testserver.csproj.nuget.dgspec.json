@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Martijn\\source\\repos\\Testserver\\Testserver\\Testserver.csproj": {}
+    "D:\\Gebruikers\\Stan\\Documenten\\School ICT\\HBO\\Leerjaar 3\\Blok 4\\Code\\CasusIOT_Server\\Testserver\\Testserver.csproj": {}
   },
   "projects": {
-    "D:\\Martijn\\source\\repos\\Testserver\\Testserver\\Testserver.csproj": {
+    "D:\\Gebruikers\\Stan\\Documenten\\School ICT\\HBO\\Leerjaar 3\\Blok 4\\Code\\CasusIOT_Server\\Testserver\\Testserver.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Martijn\\source\\repos\\Testserver\\Testserver\\Testserver.csproj",
+        "projectUniqueName": "D:\\Gebruikers\\Stan\\Documenten\\School ICT\\HBO\\Leerjaar 3\\Blok 4\\Code\\CasusIOT_Server\\Testserver\\Testserver.csproj",
         "projectName": "Testserver",
-        "projectPath": "D:\\Martijn\\source\\repos\\Testserver\\Testserver\\Testserver.csproj",
-        "packagesPath": "C:\\Users\\Martijn\\.nuget\\packages\\",
-        "outputPath": "D:\\Martijn\\source\\repos\\Testserver\\Testserver\\obj\\",
+        "projectPath": "D:\\Gebruikers\\Stan\\Documenten\\School ICT\\HBO\\Leerjaar 3\\Blok 4\\Code\\CasusIOT_Server\\Testserver\\Testserver.csproj",
+        "packagesPath": "C:\\Users\\Stan\\.nuget\\packages\\",
+        "outputPath": "D:\\Gebruikers\\Stan\\Documenten\\School ICT\\HBO\\Leerjaar 3\\Blok 4\\Code\\CasusIOT_Server\\Testserver\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Martijn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Stan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -44,6 +44,10 @@
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.1, )"
+            },
+            "System.Threading.Thread": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             }
           }
         }

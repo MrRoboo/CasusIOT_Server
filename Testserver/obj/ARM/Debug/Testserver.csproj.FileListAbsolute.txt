@@ -229,3 +229,16 @@ D:\Gebruikers\Stan\Documenten\School ICT\HBO\Leerjaar 3\Blok 4\Code\CasusIOT_Ser
 D:\Gebruikers\Stan\Documenten\School ICT\HBO\Leerjaar 3\Blok 4\Code\CasusIOT_Server\Testserver\obj\ARM\Debug\qualifiers.txt.intermediate
 D:\Gebruikers\Stan\Documenten\School ICT\HBO\Leerjaar 3\Blok 4\Code\CasusIOT_Server\Testserver\obj\ARM\Debug\MultipleQualifiersPerDimensionFound.txt
 D:\Gebruikers\Stan\Documenten\School ICT\HBO\Leerjaar 3\Blok 4\Code\CasusIOT_Server\Testserver\obj\ARM\Debug\ProjectArchitectures.txt
+D:\Gebruikers\Stan\Documenten\School ICT\HBO\Leerjaar 3\Blok 4\Code\CasusIOT_Server\Testserver\bin\ARM\Debug\Testserver.exe.config
+D:\Gebruikers\Stan\Documenten\School ICT\HBO\Leerjaar 3\Blok 4\Code\CasusIOT_Server\Testserver\bin\ARM\Debug\Newtonsoft.Json.dll
+D:\Gebruikers\Stan\Documenten\School ICT\HBO\Leerjaar 3\Blok 4\Code\CasusIOT_Server\Testserver\bin\ARM\Debug\System.Console.dll
+D:\Gebruikers\Stan\Documenten\School ICT\HBO\Leerjaar 3\Blok 4\Code\CasusIOT_Server\Testserver\bin\ARM\Debug\System.ComponentModel.Primitives.dll
+D:\Gebruikers\Stan\Documenten\School ICT\HBO\Leerjaar 3\Blok 4\Code\CasusIOT_Server\Testserver\bin\ARM\Debug\System.ComponentModel.TypeConverter.dll
+D:\Gebruikers\Stan\Documenten\School ICT\HBO\Leerjaar 3\Blok 4\Code\CasusIOT_Server\Testserver\bin\ARM\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+D:\Gebruikers\Stan\Documenten\School ICT\HBO\Leerjaar 3\Blok 4\Code\CasusIOT_Server\Testserver\bin\ARM\Debug\System.Runtime.Serialization.Formatters.dll
+D:\Gebruikers\Stan\Documenten\School ICT\HBO\Leerjaar 3\Blok 4\Code\CasusIOT_Server\Testserver\obj\ARM\Debug\Testserver.exe.config
+D:\Gebruikers\Stan\Documenten\School ICT\HBO\Leerjaar 3\Blok 4\Code\CasusIOT_Server\Testserver\obj\ARM\Debug\FxResources.System.Console.SR.resw
+D:\Gebruikers\Stan\Documenten\School ICT\HBO\Leerjaar 3\Blok 4\Code\CasusIOT_Server\Testserver\obj\ARM\Debug\FxResources.System.ComponentModel.Primitives.SR.resw
+D:\Gebruikers\Stan\Documenten\School ICT\HBO\Leerjaar 3\Blok 4\Code\CasusIOT_Server\Testserver\obj\ARM\Debug\FxResources.System.ComponentModel.TypeConverter.SR.resw
+D:\Gebruikers\Stan\Documenten\School ICT\HBO\Leerjaar 3\Blok 4\Code\CasusIOT_Server\Testserver\obj\ARM\Debug\FxResources.System.Runtime.InteropServices.RuntimeInformation.SR.resw
+D:\Gebruikers\Stan\Documenten\School ICT\HBO\Leerjaar 3\Blok 4\Code\CasusIOT_Server\Testserver\obj\ARM\Debug\FxResources.System.Runtime.Serialization.Formatters.SR.resw
