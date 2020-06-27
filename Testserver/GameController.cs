@@ -11,19 +11,11 @@ namespace Testserver
     {
         DbController dbController = new DbController();
 
-        List<Dictionary<string, object>> forceData = new List<Dictionary<string, object>>();
-        List<Dictionary<string, object>> speedData = new List<Dictionary<string, object>>();
+        List<String> forceData = new List<String>();
+        List<String> speedData = new List<String>();
 
         private DispatcherTimer timer;
         private int counter = 60;
-
-        int sessionID;
-        int gameDataID;
-
-        public GameController(int patientID)
-        {
-            sessionID = dbController.CreateSessionFor(patientID, DateTime.Now);
-        }
 
         public bool IsGameValid()
         {
@@ -54,22 +46,11 @@ namespace Testserver
         }
 
 
-        public void SetNewGame()
-        {
-            gameDataID = dbController.CreateGameDataFor(sessionID);
-        }
-
         public void EndGame()
         {
-            foreach (var fd in forceData)
-            {
-                dbController.CreateForceDataFor(gameDataID, (float)fd["Force"]);
-            }
-
-            foreach (var sd in speedData)
-            {
-                dbController.CreateSpeedDataFor(gameDataID, (DateTime)sd["TimeTriggered"], (DateTime)sd["TimePressed"], (float)sd["Distance"]);
-            }
+            dbController.AddForceData(forceData);
+            dbController.AddSpeedData(speedData);
+            dbController.WriteData();
 
             ResetData();
         }
@@ -82,20 +63,12 @@ namespace Testserver
 
         public void AddForceData(float force)
         {
-            Dictionary<string, object> fd = new Dictionary<string, object>();
-            fd.Add("Force", force);
-
-            forceData.Add(fd);
+            forceData.Add(force.ToString());
         }
 
-        public void AddSpeedData(DateTime triggered, DateTime pressed, float distance)
+        public void AddSpeedData(float speed)
         {
-            Dictionary<string, object> sd = new Dictionary<string, object>();
-            sd.Add("TimeTriggered", triggered);
-            sd.Add("TimePressed", pressed);
-            sd.Add("Distance", distance);
-
-            speedData.Add(sd);
+            speedData.Add(speed.ToString());
         }
     }
 }

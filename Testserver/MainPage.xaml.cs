@@ -23,7 +23,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Newtonsoft.Json;
 using System.Globalization;
 
 namespace Testserver
@@ -32,7 +31,7 @@ namespace Testserver
     {
         private SocketServer server;
 
-        GameController gameController = new GameController(1);
+        GameController gameController = new GameController();
 
         Raspberry raspberry = new Raspberry();
         SocketClient client = new SocketClient();
@@ -68,7 +67,6 @@ namespace Testserver
             InitButtons();
 
             //Set new game
-            gameController.SetNewGame();
             gameController.RunGame();
 
             //Logica die de flow van de app bepaald
