@@ -15,7 +15,7 @@ namespace Testserver
         List<Dictionary<string, object>> speedData = new List<Dictionary<string, object>>();
 
         private DispatcherTimer timer;
-        private int counter = 60;
+        private int counter = 600;
 
         int sessionID;
         int gameDataID;
@@ -27,7 +27,7 @@ namespace Testserver
 
         public bool IsGameValid()
         {
-            return counter == 0;
+            return counter != 0;
         }
 
         private void StartTimer()

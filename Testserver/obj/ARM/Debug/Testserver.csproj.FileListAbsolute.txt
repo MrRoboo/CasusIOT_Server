@@ -229,3 +229,45 @@ D:\Gebruikers\Stan\Documenten\School ICT\HBO\Leerjaar 3\Blok 4\Code\CasusIOT_Ser
 D:\Gebruikers\Stan\Documenten\School ICT\HBO\Leerjaar 3\Blok 4\Code\CasusIOT_Server\Testserver\obj\ARM\Debug\qualifiers.txt.intermediate
 D:\Gebruikers\Stan\Documenten\School ICT\HBO\Leerjaar 3\Blok 4\Code\CasusIOT_Server\Testserver\obj\ARM\Debug\MultipleQualifiersPerDimensionFound.txt
 D:\Gebruikers\Stan\Documenten\School ICT\HBO\Leerjaar 3\Blok 4\Code\CasusIOT_Server\Testserver\obj\ARM\Debug\ProjectArchitectures.txt
+D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\Testserver.exe
+D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\Testserver.pdb
+D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\App.xbf
+D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\MainPage.xbf
+D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\Testserver.xr.xml
+D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\Testserver.exe
+D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\Testserver.pdb
+D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\resources.pri
+D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\AppxManifest.xml
+D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\Core\AppxManifest.xml
+D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\Core\Testserver.exe
+D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\Testserver.build.appxrecipe
+D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\System.Runtime.dll
+D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\System.Data.SqlClient.dll
+D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\System.Diagnostics.DiagnosticSource.dll
+D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\System.Text.Encoding.CodePages.dll
+D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\Microsoft.UI.Xaml.Markup.winmd
+D:\Martijn\source\repos\Testserver\Testserver\bin\ARM\Debug\windows.winmd
+D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\Testserver.csproj.CoreCompileInputs.cache
+D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\Testserver.csproj.CopyComplete
+D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\ResourceHandlingTask.state
+D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\FxResources.System.Data.SqlClient.SR.resw
+D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\FxResources.System.Diagnostics.DiagnosticSource.SR.resw
+D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\FxResources.System.Text.Encoding.CodePages.SR.resw
+D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\priconfig.xml
+D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\priconfig.xml.intermediate
+D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\unfiltered.layout.resfiles
+D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\unfiltered.layout.resfiles.intermediate
+D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\filtered.layout.resfiles
+D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\filtered.layout.resfiles.intermediate
+D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\excluded.layout.resfiles
+D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\excluded.layout.resfiles.intermediate
+D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\resources.resfiles
+D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\resources.resfiles.intermediate
+D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\pri.resfiles
+D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\pri.resfiles.intermediate
+D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\qualifiers.txt
+D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\qualifiers.txt.intermediate
+D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\MultipleQualifiersPerDimensionFound.txt
+D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\ProjectArchitectures.txt
+D:\Martijn\source\repos\Testserver\Testserver\obj\ARM\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_636758480200000000.json

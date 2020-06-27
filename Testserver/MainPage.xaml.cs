@@ -23,8 +23,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Newtonsoft.Json;
 using System.Globalization;
+using System.Threading;
 
 namespace Testserver
 {
@@ -63,6 +63,7 @@ namespace Testserver
 
             //Init force sensor
             forceSensor = new ForceSensor(sensorPin, gpioPin);
+            forceSensor.gameController = gameController;
 
             //initialiseren van hardware
             InitButtons();
@@ -72,7 +73,9 @@ namespace Testserver
             gameController.RunGame();
 
             //Logica die de flow van de app bepaald
-            Aansturen();
+            //Aansturen();
+            Thread main = new Thread(new ThreadStart(Aansturen));
+            main.Start();
         }
 
 
@@ -96,7 +99,8 @@ namespace Testserver
                     String dataString = server.GetData();
                     if (dataString[0] == 'f')
                     {
-                        float force = float.Parse(dataString.Substring(0), CultureInfo.InvariantCulture.NumberFormat);
+
+                        float force = float.Parse(dataString.Substring(1), CultureInfo.InvariantCulture.NumberFormat);
                         gameController.AddForceData(force);
                     }
                  
@@ -111,7 +115,7 @@ namespace Testserver
                     Task.Delay(500).Wait();
                     server.VerstuurBericht("bericht vanuit de server");
                 }
-                Debug.WriteLine(gameController.IsGameValid());
+                //Debug.WriteLine(gameController.IsGameValid());
 
             }
         }

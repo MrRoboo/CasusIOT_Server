@@ -56,7 +56,12 @@ namespace Testserver
                 settings.Mode = SpiMode.Mode0;
 
                 string spiAqs = SpiDevice.GetDeviceSelector(SPI_CONTROLLER_NAME);
+                Debug.WriteLine(spiAqs);
                 var devicesInfo = await DeviceInformation.FindAllAsync(spiAqs);
+                foreach (var item in devicesInfo)
+                {
+                    Debug.WriteLine(item.Id);
+                }
                 spiPin = await SpiDevice.FromIdAsync(devicesInfo[0].Id, settings);
             }
             catch (Exception e)
@@ -77,7 +82,10 @@ namespace Testserver
 
         private void Timer_Tick(object sender, object e)
         {
-            HandleData();
+            if (spiPin != null)
+            {
+                HandleData();
+            }
         }
 
         private void HandleData()
