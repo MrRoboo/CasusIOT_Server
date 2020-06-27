@@ -32,7 +32,7 @@ namespace Testserver
     {
         private SocketServer server;
 
-        GameController gameController = new GameController(1);
+        GameController gameController;
 
         Raspberry raspberry = new Raspberry();
         SocketClient client = new SocketClient();
@@ -61,15 +61,17 @@ namespace Testserver
             //Koppel OnDataOntvangen aan de methode die uitgevoerd worden:
             server.OnDataOntvangen += server.Server_OnDataOntvangen;
 
+            // Init gamecontroller
+            gameController = new GameController(1, server);
+
             //Init force sensor
             forceSensor = new ForceSensor(sensorPin, gpioPin);
+            forceSensor.gameController = gameController;
 
             //initialiseren van hardware
             InitButtons();
 
-            //Set new game
-            gameController.SetNewGame();
-            gameController.RunGame();
+
 
             //Logica die de flow van de app bepaald
             Aansturen();
@@ -98,6 +100,7 @@ namespace Testserver
                     {
                         float force = float.Parse(dataString.Substring(0), CultureInfo.InvariantCulture.NumberFormat);
                         gameController.AddForceData(force);
+                        gameController.DetermineTouchClient();
                     }
                  
                     Debug.WriteLine(dataString);
@@ -109,7 +112,7 @@ namespace Testserver
                     //De delay voorkomt de spam van berichten in de console tijdens het testen. 
                     //omdat de data van client naar server en visa versa wordt verstuurd.
                     Task.Delay(500).Wait();
-                    server.VerstuurBericht("bericht vanuit de server");
+                    server.VerstuurBericht("bericht vanuit de server", 0);
                 }
                 Debug.WriteLine(gameController.IsGameValid());
 

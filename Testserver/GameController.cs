@@ -16,13 +16,32 @@ namespace Testserver
 
         private DispatcherTimer timer;
         private int counter = 60;
+        private Random randomizer = new Random();
 
         int sessionID;
         int gameDataID;
 
-        public GameController(int patientID)
+        private SocketServer server;
+
+        public GameController(int patientID, SocketServer server)
         {
             sessionID = dbController.CreateSessionFor(patientID, DateTime.Now);
+            this.server = server;
+        }
+
+        public void SendAwaitTouchClient(int clientIndex)
+        {
+            server.VerstuurBericht("touch", clientIndex);
+        }
+
+        public void SendGameStart()
+        {
+            server.VerstuurBerichtIedereen("start");
+        }
+
+        public void SendGameEnd()
+        {
+            server.VerstuurBerichtIedereen("end");
         }
 
         public bool IsGameValid()
@@ -50,9 +69,16 @@ namespace Testserver
 
         public void RunGame()
         {
+            DetermineTouchClient();
             StartTimer();
+            SendGameStart();
         }
 
+        public void DetermineTouchClient()
+        {
+            int clientID = randomizer.Next(0, server.teams.Count - 1);
+            SendAwaitTouchClient(clientID);
+        }
 
         public void SetNewGame()
         {
@@ -71,6 +97,7 @@ namespace Testserver
                 dbController.CreateSpeedDataFor(gameDataID, (DateTime)sd["TimeTriggered"], (DateTime)sd["TimePressed"], (float)sd["Distance"]);
             }
 
+            SendGameEnd();
             ResetData();
         }
 

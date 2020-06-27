@@ -21,7 +21,7 @@ namespace Testserver
         public delegate void DataOntvangenDelegate(string data);
         public DataOntvangenDelegate OnDataOntvangen;
 
-        private List<SocketClient> teams;
+        public List<SocketClient> teams;
         private List<string> teamIP = new List<string>();
 
         private String _data;
@@ -70,8 +70,9 @@ namespace Testserver
                     teamIP.Add(bericht);
                     SocketClient tmp = new SocketClient(bericht, 9000);
                     teams.Add(tmp);
+                    int clientIndex = teams.Count - 1;
                     await Task.Delay(1000);
-                    VerstuurBericht("connectie gemaakt");
+                    VerstuurBericht("connectie gemaakt", clientIndex);
                 }
                 else
                 {
@@ -133,9 +134,9 @@ namespace Testserver
             }
         }
 
-        public void VerstuurBericht(string bericht)
+        public void VerstuurBericht(string bericht, int clientIndex)
         {
-            teams[0].Verstuur(bericht);
+            teams[clientIndex].Verstuur(bericht);
         }
 
         public String GetData()
