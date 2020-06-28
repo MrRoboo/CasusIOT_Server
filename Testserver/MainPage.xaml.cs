@@ -23,13 +23,16 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
+using System.Globalization;
+using System.Threading;
 
 namespace Testserver
 {
     public sealed partial class MainPage : Page
     {
         private SocketServer server;
+
+        GameController gameController;
 
         Raspberry raspberry = new Raspberry();
         SocketClient client = new SocketClient();
@@ -42,6 +45,7 @@ namespace Testserver
         private bool _isObjectTouched = false;
         private string _objectTouchmessage;
 
+        private const int patientID = 1;
 
         //############################################
         //********************MAIN********************
@@ -58,14 +62,24 @@ namespace Testserver
             //Koppel OnDataOntvangen aan de methode die uitgevoerd worden:
             server.OnDataOntvangen += server.Server_OnDataOntvangen;
 
+
+            //init gamecontroller
+            gameController = new GameController(patientID, server);
             //Init force sensor
             forceSensor = new ForceSensor(sensorPin, gpioPin);
+            forceSensor.gameController = gameController;
 
             //initialiseren van hardware
             InitButtons();
 
+            //Set new game
+            gameController.SetNewGame();
+            gameController.RunGame();
+
             //Logica die de flow van de app bepaald
-            Aansturen();
+            //Aansturen();
+            Thread main = new Thread(new ThreadStart(Aansturen));
+            main.Start();
         }
 
 
@@ -77,7 +91,7 @@ namespace Testserver
 
         private void Aansturen()
         {
-            while (true)
+            while (gameController.IsGameValid())
             {
                 //Information will be sent to leds if data is received
                 if (server.GetDataReceived())
@@ -87,18 +101,20 @@ namespace Testserver
 
                     //Get received data -> SocketServer.cs
                     String dataString = server.GetData();
+                    if (dataString[0] == 'f')
+                    {
+
+                        float force = float.Parse(dataString.Substring(1), CultureInfo.InvariantCulture.NumberFormat);
+                        gameController.AddForceData(force);
+                        gameController.DetermineTouchClient();
+                    }
+                 
                     Debug.WriteLine(dataString);
 
-                    //Check the values of the sensors and send to host
-                    //_objectTouchmessage = "test communication message";
-                    //Debug.WriteLine(_objectTouchmessage);
-
-                    //De delay voorkomt de spam van berichten in de console tijdens het testen. 
-                    //omdat de data van client naar server en visa versa wordt verstuurd.
-                    Task.Delay(500).Wait();
-                    server.VerstuurBericht("bericht vanuit de server");
 
                 }
+                //Debug.WriteLine(gameController.IsGameValid());
+
             }
         }
 

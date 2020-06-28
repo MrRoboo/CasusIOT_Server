@@ -20,32 +20,33 @@ namespace Testserver
         /*mcp3002 10 bit output*/
         private byte[] readData = new byte[2] { 0x00, 0x00 };
         private byte[] writeData = new byte[2] { 0x68, 0x00 };
-        private List<int> _forceSensorData = new List<int>();
+        private List<int> forceSensorData = new List<int>();
 
         private int resultData;
         private DateTime? timePressed;
 
-        public SpiDevice SpiPin;
+        public GameController gameController;
+
+        public SpiDevice spiPin;
         public GpioPin gpioPin;
 
         public ForceSensor(int SPI_ID, int GPIO_ID)
         {
-            startTimer();
-            initGPIO(GPIO_ID);
-            Initialise(SPI_ID);
+            StartTimer();
+            InitGPIO(GPIO_ID);
+            InitSPI(SPI_ID);
         }
 
-        private void initGPIO(int GPIO_ID)
+        private void InitGPIO(int GPIO_ID)
         {
             var gpio = GpioController.GetDefault();
             gpioPin = gpio.OpenPin(GPIO_ID);
-            //gpioPin.ValueChanged += Value_Changed;
         }
 
 
         //ChipSelectId: 0 or 1
         //NOTE - THIS IS AN ASYNC METHOD, IF YOU DON'T AWAIT IT WHEN CALLING THEN IT MAY NOT BE COMPELTE WHEN YOU FIRST TRY TO USE THE OTHER IO METHODS)
-        public async void Initialise(int ChipSelectId)
+        public async void InitSPI(int ChipSelectId)
         {
             try
             {
@@ -55,9 +56,13 @@ namespace Testserver
                 settings.Mode = SpiMode.Mode0;
 
                 string spiAqs = SpiDevice.GetDeviceSelector(SPI_CONTROLLER_NAME);
+                Debug.WriteLine(spiAqs);
                 var devicesInfo = await DeviceInformation.FindAllAsync(spiAqs);
-                SpiPin = await SpiDevice.FromIdAsync(devicesInfo[0].Id, settings);
-                Debug.WriteLine(devicesInfo[0].Id);
+                foreach (var item in devicesInfo)
+                {
+                    Debug.WriteLine(item.Id);
+                }
+                spiPin = await SpiDevice.FromIdAsync(devicesInfo[0].Id, settings);
             }
             catch (Exception e)
             {
@@ -67,24 +72,27 @@ namespace Testserver
             return;
         }
 
-        private void startTimer()
+        private void StartTimer()
         {
-            this.timer = new DispatcherTimer();
-            this.timer.Interval = TimeSpan.FromMilliseconds(100);
-            this.timer.Tick += Timer_Tick;
-            this.timer.Start();
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(100);
+            timer.Tick += Timer_Tick;
+            timer.Start();
         }
 
         private void Timer_Tick(object sender, object e)
         {
-            HandleData();
+            if (spiPin != null)
+            {
+                HandleData();
+            }
         }
 
         private void HandleData()
         {
 
-            SpiPin.TransferFullDuplex(writeData, readData);
-            resultData = convertToInt(readData);
+            spiPin.TransferFullDuplex(writeData, readData);
+            resultData = ConvertToInt(readData);
 
             if (resultData > 25)
             {
@@ -93,11 +101,11 @@ namespace Testserver
                     timePressed = new DateTime();
                 }
                 Debug.WriteLine(resultData);
-                CalcForce(resultData);
+                CalculateForce(resultData);
             }
-            else if (resultData < 25 && getValue() == GpioPinValue.Low)
+            else if (resultData < 25 && GetValue() == GpioPinValue.Low)
             {
-                if (_forceSensorData.Count > 0)
+                if (forceSensorData.Count > 0)
                 {
                     SendData();
                 }
@@ -107,30 +115,24 @@ namespace Testserver
 
         private void SendData()
         {
-            Debug.WriteLine("Lijst laten zien");
-            var highestValue = _forceSensorData.Max();
-            Debug.WriteLine(highestValue);
-            foreach (var data in _forceSensorData)
-            {
-                Debug.WriteLine(data);
-            }
+            var highestValue = forceSensorData.Max();
+            gameController.AddForceData(highestValue);
             ClearData();
-            Debug.WriteLine("Lijst is leeg");
 
         }
 
         private void ClearData()
         {
             timePressed = null;
-            _forceSensorData.Clear();
+            forceSensorData.Clear();
         }
 
-        private void CalcForce(int resultData)
+        private void CalculateForce(int resultData)
         {
-            _forceSensorData.Add(resultData);
+            forceSensorData.Add(resultData);
         }
 
-        public int convertToInt(byte[] data)
+        public int ConvertToInt(byte[] data)
         {
             int result;
             result = data[0] & 0x03;
@@ -139,10 +141,9 @@ namespace Testserver
             return result;
         }
 
-        public GpioPinValue getValue()
+        public GpioPinValue GetValue()
         {
             return gpioPin.Read();
         }
-
     }
 }
