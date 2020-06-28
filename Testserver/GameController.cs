@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,9 +15,10 @@ namespace Testserver
         List<Dictionary<string, object>> forceData = new List<Dictionary<string, object>>();
         List<Dictionary<string, object>> speedData = new List<Dictionary<string, object>>();
 
-        private DispatcherTimer timer;
-        private int counter = 60;
+        //private DispatcherTimer timer;
+        //private int counter = 20;
         private Random randomizer = new Random();
+        public bool gameState = false;
 
         int sessionID;
         int gameDataID;
@@ -32,9 +34,14 @@ namespace Testserver
 
 
 
-        public void SendAwaitTouchClient(int clientIndex)
+        public async void SendAwaitTouchClient(int clientIndex)
         {
+            await Task.Delay(1000);
             server.VerstuurBericht("touch", clientIndex);
+            await Task.Delay(1000);
+            server.VerstuurBericht("publisher", 0);
+            //server.VerstuurBericht("publisher", (int)lastClientIndex);
+
         }
 
 
@@ -42,51 +49,61 @@ namespace Testserver
         public void SendGameStart()
         {
             server.VerstuurBerichtIedereen("start");
+
         }
 
 
 
-        public void SendGameEnd()
+        public async void SendGameEnd()
         {
+            await Task.Delay(1000);
+            server.VerstuurBericht("off", 0);
+            await Task.Delay(1000);
             server.VerstuurBerichtIedereen("end");
+            //server.VerstuurBericht("off", (int)lastClientIndex);
+
         }
 
 
 
         public bool IsGameValid()
         {
-            return counter == 0;
+            return gameState;
         }
 
 
 
-        private void StartTimer()
+        //private void StartTimer()
+        //{
+        //    timer = new DispatcherTimer();
+        //    timer.Interval = TimeSpan.FromMilliseconds(1000);
+        //    timer.Tick += Timer_Tick;
+        //    timer.Start();
+        //}
+
+
+
+        //private void Timer_Tick(object sender, object e)
+        //{
+        //    Debug.WriteLine(counter);
+        //    counter--;
+        //    if (counter == 0)
+        //    {
+        //        timer.Stop();
+        //        EndGame();
+        //        Debug.WriteLine("End game");
+        //    }
+        //}
+
+
+
+        public async void RunGame()
         {
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(1000);
-            timer.Tick += Timer_Tick;
-            timer.Start();
-        }
-
-
-
-        private void Timer_Tick(object sender, object e)
-        {
-            counter--;
-            if (counter == 0)
-            {
-                timer.Stop();
-                EndGame();
-            }
-        }
-
-
-
-        public void RunGame()
-        {
-            DetermineTouchClient();
-            StartTimer();
+            //StartTimer();
+            await Task.Delay(1000);
             SendGameStart();
+            await Task.Delay(1000);
+            DetermineTouchClient();
         }
 
 
@@ -94,22 +111,19 @@ namespace Testserver
 
         public void DetermineTouchClient()
         {
-            int clientID = 0;
             int maxClientIndex = server.teams.Count - 1;
-            if (maxClientIndex != 0)
-            {
-                clientID = randomizer.Next(0, maxClientIndex);
+            int clientIndex = 0; //randomizer.Next(0, maxClientIndex);
 
-                if (lastClientIndex != null)
-                {
-                    while (clientID == lastClientIndex)
-                    {
-                        clientID = randomizer.Next(0, maxClientIndex);
-                    }
-                    lastClientIndex = clientID;
-                }
-            }
-            SendAwaitTouchClient(clientID);
+            //if (lastClientIndex != null)
+            //{
+            //    while (clientIndex == lastClientIndex)
+            //    {
+            //        clientIndex = randomizer.Next(0, maxClientIndex);
+            //    }
+            //    lastClientIndex = clientIndex;
+            //}
+
+            SendAwaitTouchClient(clientIndex);
         }
 
 

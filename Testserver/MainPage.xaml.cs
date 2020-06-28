@@ -40,11 +40,11 @@ namespace Testserver
         ForceSensor forceSensor;
         const int sensorPin = 0; //Line 0 maps to physical pin number 24 on the RPi2 or RPi3
         const int gpioPin = 25;
+        const int buttonPin = 21;
 
-        private Button _button;
-        private bool _isObjectTouched = false;
-        private string _objectTouchmessage;
+        private Button gameButton;
 
+        private int clientCount = 1;
         private const int patientID = 1;
 
         //############################################
@@ -69,12 +69,13 @@ namespace Testserver
             forceSensor = new ForceSensor(sensorPin, gpioPin);
             forceSensor.gameController = gameController;
 
+            gameButton = new Button(buttonPin, gameController);
+
             //initialiseren van hardware
-            InitButtons();
+            //InitButtons();
 
             //Set new game
             gameController.SetNewGame();
-            gameController.RunGame();
 
             //Logica die de flow van de app bepaald
             //Aansturen();
@@ -91,6 +92,18 @@ namespace Testserver
 
         private void Aansturen()
         {
+            Debug.WriteLine("Start de game...");
+            while (!gameController.IsGameValid())
+            {
+
+            }
+            Debug.WriteLine("Wachten op clients...");
+            while (server.teams.Count != clientCount)
+            {
+                //Debug.WriteLine("Wachten op clients....");
+            }
+            gameController.RunGame();
+            Debug.WriteLine("Game gestart");
             while (gameController.IsGameValid())
             {
                 //Information will be sent to leds if data is received
@@ -107,40 +120,41 @@ namespace Testserver
                         float force = float.Parse(dataString.Substring(1), CultureInfo.InvariantCulture.NumberFormat);
                         gameController.AddForceData(force);
                         gameController.DetermineTouchClient();
-                    }
+                    } 
                  
                     Debug.WriteLine(dataString);
 
 
                 }
-                //Debug.WriteLine(gameController.IsGameValid());
 
             }
+            gameController.EndGame();
+            Debug.WriteLine("stan heeft de game gestopt en is moe");
         }
 
         //*****************INITIALIZE*****************
 
-        private void InitButtons()
-        {
-            //GPIO-pin 5 voor button
-            _button = new Button(5);
-            _button.buttonID.ValueChanged += ButtonID_ValueChanged;
-        }
+        //private void InitButtons()
+        //{
+        //    //GPIO-pin 5 voor button
+        //    _button = new Button(5);
+        //    _button.buttonID.ValueChanged += ButtonID_ValueChanged;
+        //}
 
         //############################################
         //*******************EVENTS*******************
         //############################################
 
         //check what button pressed and return correct sensor data
-        private void ButtonID_ValueChanged(GpioPin sender, GpioPinValueChangedEventArgs args)
-        {
-            if (args.Edge == GpioPinEdge.FallingEdge)
-            {
-                Trigger sensor = new Trigger("force sensor");
-                _isObjectTouched = sensor.GetSensorValue();
+        //private void ButtonID_ValueChanged(GpioPin sender, GpioPinValueChangedEventArgs args)
+        //{
+        //    if (args.Edge == GpioPinEdge.FallingEdge)
+        //    {
+        //        Trigger sensor = new Trigger("force sensor");
+        //        _isObjectTouched = sensor.GetSensorValue();
 
-                Debug.WriteLine("{0} button pressed. {1}", sensor.GetSensorName(), sensor.SensorActivation());
-            }
-        }
+        //        Debug.WriteLine("{0} button pressed. {1}", sensor.GetSensorName(), sensor.SensorActivation());
+        //    }
+        //}
     }
 }
