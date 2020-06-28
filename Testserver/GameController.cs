@@ -15,20 +15,50 @@ namespace Testserver
         List<Dictionary<string, object>> speedData = new List<Dictionary<string, object>>();
 
         private DispatcherTimer timer;
-        private int counter = 600;
+        private int counter = 60;
+        private Random randomizer = new Random();
 
         int sessionID;
         int gameDataID;
 
-        public GameController(int patientID)
+        private SocketServer server;
+        private int? lastClientIndex;
+
+        public GameController(int patientID, SocketServer server)
         {
             sessionID = dbController.CreateSessionFor(patientID, DateTime.Now);
+            this.server = server;
         }
+
+
+
+        public void SendAwaitTouchClient(int clientIndex)
+        {
+            server.VerstuurBericht("touch", clientIndex);
+        }
+
+
+
+        public void SendGameStart()
+        {
+            server.VerstuurBerichtIedereen("start");
+        }
+
+
+
+        public void SendGameEnd()
+        {
+            server.VerstuurBerichtIedereen("end");
+        }
+
+
 
         public bool IsGameValid()
         {
-            return counter != 0;
+            return counter == 0;
         }
+
+
 
         private void StartTimer()
         {
@@ -37,6 +67,8 @@ namespace Testserver
             timer.Tick += Timer_Tick;
             timer.Start();
         }
+
+
 
         private void Timer_Tick(object sender, object e)
         {
@@ -48,9 +80,36 @@ namespace Testserver
             }
         }
 
+
+
         public void RunGame()
         {
+            DetermineTouchClient();
             StartTimer();
+            SendGameStart();
+        }
+
+
+
+
+        public void DetermineTouchClient()
+        {
+            int clientID = 0;
+            int maxClientIndex = server.teams.Count - 1;
+            if (maxClientIndex != 0)
+            {
+                clientID = randomizer.Next(0, maxClientIndex);
+
+                if (lastClientIndex != null)
+                {
+                    while (clientID == lastClientIndex)
+                    {
+                        clientID = randomizer.Next(0, maxClientIndex);
+                    }
+                    lastClientIndex = clientID;
+                }
+            }
+            SendAwaitTouchClient(clientID);
         }
 
 
@@ -59,6 +118,8 @@ namespace Testserver
             gameDataID = dbController.CreateGameDataFor(sessionID);
         }
 
+
+
         public void EndGame()
         {
             foreach (var fd in forceData)
@@ -66,13 +127,20 @@ namespace Testserver
                 dbController.CreateForceDataFor(gameDataID, (float)fd["Force"]);
             }
 
+
+
             foreach (var sd in speedData)
             {
                 dbController.CreateSpeedDataFor(gameDataID, (DateTime)sd["TimeTriggered"], (DateTime)sd["TimePressed"], (float)sd["Distance"]);
             }
 
+
+
+            SendGameEnd();
             ResetData();
         }
+
+
 
         void ResetData()
         {
@@ -80,13 +148,19 @@ namespace Testserver
             speedData.Clear();
         }
 
+
+
         public void AddForceData(float force)
         {
             Dictionary<string, object> fd = new Dictionary<string, object>();
             fd.Add("Force", force);
 
+
+
             forceData.Add(fd);
         }
+
+
 
         public void AddSpeedData(DateTime triggered, DateTime pressed, float distance)
         {
@@ -94,6 +168,8 @@ namespace Testserver
             sd.Add("TimeTriggered", triggered);
             sd.Add("TimePressed", pressed);
             sd.Add("Distance", distance);
+
+
 
             speedData.Add(sd);
         }
